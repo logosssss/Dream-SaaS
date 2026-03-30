@@ -1,0 +1,76 @@
+server:
+  port: 9001
+spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  application:
+    name: dream-saas-gateway
+  config:
+    import:
+      - nacos:dream-saas-gateway.yml?group=dream&refresh=true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+          ### 用户服务
+        - id: dream-saas-user
+          predicates:
+            - Path=/client/user/**
+#          uri: lb://dream-saas-user
+          uri: http://localhost:8001
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: dream
+        register-enabled: false
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        enable-remote-sync-config: true
+        config-long-poll-timeout: 3000
+        config-retry-time: 5
+        max-retry: 5
+        refresh-enabled: true
+        group: dream
+      server-addr: 127.0.0.1:8848
+logging:
+  level:
+    com.alibaba.cloud.nacos: DEBUG
+    com.alibaba.nacos.client.config: DEBUG
+    com.alibaba.nacos.common.remote.client: DEBUG
+
+dream:
+  user:
+    possibleLoginUrls:
+      - /client/product/details
+    noLoginUrls:
+      - /client/user/health/test
+      - /client/user/login
+      - /client/user/login/getLoginCode
+      - /client/user/login/loginByCode
+      - /client/user/login/checkAccount
+      - /client/user/login/forgetPassword
+      - /client/user/login/sendForgetPasswordCode
+      - /client/user/login/scanCode
+      - /client/user/login/acceptLogin
+      - /client/user/login/sendCodeForBindPhone
+      - /client/user/login/bind
+      - /client/user/login/confirmBind
+      - /client/user/login/setupPwd
+      - /client/user/register/getCode
+      - /client/user/register/phoneRegister
+      - /client/user/register/getEmailCode
+      - /client/user/register/emailRegister
+      - /client/user/register/accountRegister
+      - /server/admin/login
+      - /platform/admin/login
+      - /client/product/list
+      - /client/business/getByClientUrl
+      - /client/user/wx/portal/mp
+  gateway:
+    loginUrls:
+      - /dream/user/login

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhu.core.user.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhu.core.user.bean.eneity.User">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="user_id" column="user_id" jdbcType="VARCHAR"/>
+            <result property="account_name" column="account_name" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="customer_ide" column="customer_ide" jdbcType="VARCHAR"/>
+            <result property="account_type" column="account_type" jdbcType="VARCHAR"/>
+            <result property="contact" column="contact" jdbcType="VARCHAR"/>
+            <result property="parent_id" column="parent_id" jdbcType="VARCHAR"/>
+            <result property="region_code" column="region_code" jdbcType="VARCHAR"/>
+            <result property="phone_num" column="phone_num" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="we_chat_open_id" column="we_chat_open_id" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="salt" column="salt" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="last_login_time" column="last_login_time" jdbcType="TIMESTAMP"/>
+            <result property="business_code" column="business_code" jdbcType="VARCHAR"/>
+            <result property="user_desc" column="user_desc" jdbcType="VARCHAR"/>
+            <result property="del_flag" column="del_flag" jdbcType="TINYINT"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="create_id" column="create_id" jdbcType="VARCHAR"/>
+            <result property="modifier_id" column="modifier_id" jdbcType="VARCHAR"/>
+            <result property="gmt_create" column="gmt_create" jdbcType="TIMESTAMP"/>
+            <result property="gmt_modified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,account_name,
+        avatar,customer_ide,account_type,
+        contact,parent_id,region_code,
+        phone_num,email,we_chat_open_id,
+        password,salt,status,
+        last_login_time,business_code,user_desc,
+        del_flag,remark,create_id,
+        modifier_id,gmt_create,gmt_modified
+    </sql>
+</mapper>

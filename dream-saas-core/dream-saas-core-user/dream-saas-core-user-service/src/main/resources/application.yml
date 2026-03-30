@@ -1,0 +1,30 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: dream-saas-core-user
+  config:
+    import:
+      - nacos:dream-saas-user.yml?group=dream&refresh=true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://${VAT_DB_HOST:39.108.59.205}:${VAT_DB_PORT:3306}/${VAT_DB_DATABASE:platform-saas-dev}?useSSL=false&useUnicode=true&characterEncoding=utf8&useTimezone=true&serverTimezone=GMT%2B8&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: jp
+    password: jp2016JP
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: dream
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        enable-remote-sync-config: true
+        config-long-poll-timeout: 3000
+        config-retry-time: 5
+        max-retry: 5
+        refresh-enabled: true
+        group: dream
+      server-addr: 127.0.0.1:8848
+

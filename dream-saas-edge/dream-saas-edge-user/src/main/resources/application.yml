@@ -1,0 +1,30 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: dream-saas-user
+  config:
+    import:
+      - nacos:dream-saas-user.yml?group=dream&refresh=true
+  cloud:
+    nacos:
+      discovery:
+        group: dream
+        server-addr: 127.0.0.1:8848
+        register-enabled: false
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        enable-remote-sync-config: true
+        config-long-poll-timeout: 3000
+        config-retry-time: 5
+        max-retry: 5
+        refresh-enabled: true
+        group: dream
+      server-addr: 127.0.0.1:8848
+logging:
+  level:
+    com.alibaba.cloud.nacos: DEBUG
+    com.alibaba.nacos.client.config: DEBUG
+    com.alibaba.nacos.common.remote.client: DEBUG
+
