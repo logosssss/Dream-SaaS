@@ -15,6 +15,7 @@
         <module>dream-saas-common</module>
         <module>dream-saas-cache</module>
         <module>dream-saas-message</module>
+        <module>dream-ai</module>
     </modules>
     <packaging>pom</packaging>
 

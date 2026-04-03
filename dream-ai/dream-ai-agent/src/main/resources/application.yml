@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: dream-ai-agent
+  ai:
+    # Spring AI：OpenAI 兼容 API（官方 OpenAI、Azure OpenAI、或自建兼容网关）
+    openai:
+      api-key: ${OPENAI_API_KEY:sk-d5a7d94cd3d841709e502b8d90298054}
+      base-url: ${OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/v1}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:gpt-4o-mini}
+    # Spring AI Alibaba：DashScope（环境变量 AI_DASHSCOPE_API_KEY 更常见，也可用 spring.ai.dashscope.api-key）
+    dashscope:
+      api-key: ${AI_DASHSCOPE_API_KEY:sk-d5a7d94cd3d841709e502b8d90298054}
+      chat:
+        options:
+          model: ${DASHSCOPE_MODEL:qwen-turbo}
